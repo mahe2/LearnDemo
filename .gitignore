@@ -5,5 +5,8 @@
 /.idea/libraries
 .DS_Store
 /build
+/.idea/misc.xml
 /captures
 .externalNativeBuild
+.idea/vcs.xml
+
