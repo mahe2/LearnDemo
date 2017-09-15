@@ -24,7 +24,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "3.0.0"
+        versionName "4.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -91,18 +91,19 @@ android {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 
-    applicationVariants.all{ variant->
-        variant.outputs.each { output->
-            def oldFile = output.outputFile
-            def newName = '';
-            if(variant.buildType.name.equals('release')){
-                // APK输出文件名规则：aiyou-版本名-市场-release.apk
-                def releaseApkName = 'learndemo_' + defaultConfig.versionName + '.apk'
-                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
-                output.outputFile = new File(appReleaseDir + '/', releaseApkName)
-            }
-        }
-    }
+    // 使用 clean assemble 打包时使用以下代码
+//    applicationVariants.all{ variant->
+//        variant.outputs.each { output->
+//            def oldFile = output.outputFile
+//            def newName = '';
+//            if(variant.buildType.name.equals('release')){
+//                // APK输出文件名规则：aiyou-版本名-市场-release.apk
+//                def releaseApkName = 'learndemo_' + defaultConfig.versionName + '.apk'
+//                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+//                output.outputFile = new File(appReleaseDir + '/', releaseApkName)
+//            }
+//        }
+//    }
 
 
 }
