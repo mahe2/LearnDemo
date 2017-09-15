@@ -131,7 +131,7 @@ dependencies {
 packer {
     archiveNameFormat = '${buildType}-v${versionName}-${channel}'
 //    archiveOutput = new File(project.rootProject.buildDir, "apks")
-      archiveOutpu = new File(appReleaseDir)
+      archiveOutput = new File(appReleaseDir)
 //    channelList = ['*Douban*', 'Google/', '中文/@#市场', 'Hello@World',
 //                   'GradleTest', '20070601!@#$%^&*(){}:"<>?-=[];\',./']
     channelFile = new File(project.rootDir, "markets.txt")
