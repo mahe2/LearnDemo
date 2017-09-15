@@ -2,6 +2,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'packer'
 def AAVersion = '4.1.0'
+
+ext.appReleaseDir = ""
+
+def loadProperties() {
+    def proFile = file("../gradle.properties")
+    Properties p = new Properties()
+    proFile.withInputStream { stream->
+        p.load(stream)
+    }
+    appReleaseDir = p.appReleaseDir
+}
+
+loadProperties()
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -75,6 +89,19 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
         exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    applicationVariants.all{ variant->
+        variant.outputs.each { output->
+            def oldFile = output.outputFile
+            def newName = '';
+            if(variant.buildType.name.equals('release')){
+                // APK输出文件名规则：aiyou-版本名-市场-release.apk
+                def releaseApkName = 'learndemo_' + defaultConfig.versionName + '.apk'
+                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+                output.outputFile = new File(appReleaseDir + '/', releaseApkName)
+            }
+        }
     }
 
 
