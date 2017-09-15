@@ -1,0 +1,31 @@
+#这是一个自我学习的代码demo项目，在不断学习总结的过程中包含但不限于以下内容
+
+1.Mvp设计模式
+2.RxJava 异步框架、增强的观察者模式、无限复杂逻辑下，代码依然逻辑简洁
+3.RxAndroid
+4.Retrofit
+5.Glide
+6.代码混淆
+7.多渠道打包
+8.android 常用脚本
+9.android 8.0新功能
+10.recyclerView
+11.java基础
+12.java集合
+13.java IO
+14.java 多线程并发
+15.java 设计模式
+16.java 思想
+17.ARouter
+18.EventBus
+19.Groovy
+20.Dagger
+21.AndroidAnnotations
+21.数据库相关操作
+22.android studio 工具使用
+23.OOM检查
+24.热修复
+25.插件化
+
+
+最后开源到github上，迭代开发

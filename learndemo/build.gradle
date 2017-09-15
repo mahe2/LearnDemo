@@ -1,0 +1,131 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'packer'
+def AAVersion = '4.1.0'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.learn.demo"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        v2 {
+            storeFile file("learndemo.jks")
+            storePassword "123456"
+            keyAlias "learndemo"
+            keyPassword "123456"
+            v2SigningEnabled true
+        }
+
+        v1 {
+            storeFile file("learndemo.jks")
+            storePassword "123456"
+            keyAlias "learndemo"
+            keyPassword "123456"
+            v2SigningEnabled false
+        }
+
+    }
+
+    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+
+//        debug{
+//            signingConfig signingConfigs.v2
+//            minifyEnabled false
+//        }
+
+        release {
+            signingConfig signingConfigs.v2
+            minifyEnabled false
+        }
+
+        beta {
+            signingConfig signingConfigs.v1
+            minifyEnabled false
+        }
+
+        alpha {
+            minifyEnabled false
+        }
+    }
+
+//    productFlavors {
+//        free {}
+//
+//        paid {}
+//
+//        other {}
+//    }
+
+    lintOptions {
+        abortOnError false
+        htmlReport true
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    apt "org.androidannotations:androidannotations:$AAVersion"//依赖注入
+    compile "org.androidannotations:androidannotations-api:$AAVersion"//
+    testCompile 'junit:junit:4.12'
+    apt 'com.alibaba:arouter-compiler:1.0.1'//
+    compile 'com.alibaba:arouter-api:1.0.2'//页面路由
+    compile 'com.mcxiaoke.packer-ng:helper:2.0.0'//多渠道打包
+
+    compile 'com.google.dagger:dagger:2.4'
+    apt 'com.google.dagger:dagger-compiler:2.4'
+    //java注解
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+
+}
+
+packer {
+    archiveNameFormat = '${buildType}-v${versionName}-${channel}'
+    archiveOutput = new File(project.rootProject.buildDir, "apks")
+//    channelList = ['*Douban*', 'Google/', '中文/@#市场', 'Hello@World',
+//                   'GradleTest', '20070601!@#$%^&*(){}:"<>?-=[];\',./']
+    channelFile = new File(project.rootDir, "markets.txt")
+//    channelMap = [
+//            "Cat" : project.rootProject.file("channels/cat.txt"),
+//            "Dog" : project.rootProject.file("channels/dog.txt"),
+//            "Fish": project.rootProject.file("channels/channels.txt")
+//    ]
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName "your.package.name"
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel 'INFO'
+        // logFile '/var/log/aa.log'
+        moduleName project.getName();
+    }
+
+}
