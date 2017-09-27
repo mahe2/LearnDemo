@@ -127,8 +127,13 @@ dependencies {
     //java注解
     compile 'org.glassfish:javax.annotation:10.0-b28'
 
+    //内存检查 START
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //内存检查 END
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 }
 
