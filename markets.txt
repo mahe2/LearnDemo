@@ -1,2 +1,4 @@
 baidu
 xiaomi
+qihu360
+googleplay
