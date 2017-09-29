@@ -9,6 +9,10 @@ import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.learn.demo.R;
+import com.learn.demo.adapter.JokeListAdapter;
+import com.learn.demo.bean.Joke;
+
+import java.util.ArrayList;
 
 /**
  * Created by mahe on 2017/8/30.
@@ -17,7 +21,9 @@ import com.learn.demo.R;
 @Route(path = "/rxjava/")
 public class RxJavaActivity extends AppCompatActivity {
 
+    private ArrayList<Joke> mJokeListAdapterDataSet = new ArrayList<Joke>();
     private ListView mThemeListView;
+    private JokeListAdapter mJokeListAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +34,9 @@ public class RxJavaActivity extends AppCompatActivity {
 
     private void initView(){
         mThemeListView = (ListView) findViewById(R.id.theme_listview);
+        mJokeListAdapter = new JokeListAdapter(this);
+        mJokeListAdapter.setDataSet(mJokeListAdapterDataSet);
+        mThemeListView.setAdapter(mJokeListAdapter);
     }
 
     private void initData(){

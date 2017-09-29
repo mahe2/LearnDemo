@@ -6,19 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:clickable="true"
     tools:context="com.learn.demo.MainActivity">
 
     <TextView
-        android:text="笑话列表"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:id="@+id/theme_listview"
+        android:id="@+id/joke_content_textview"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1">
-
-    </ListView>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="6dp"/>
 
 </LinearLayout>
