@@ -4,10 +4,12 @@ import android.util.Log;
 
 import com.learn.demo.bean.Joke;
 import com.learn.demo.bean.JokeDataWraper;
+import com.learn.demo.bean.WeixinDataWraper;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -59,6 +61,14 @@ public class HttpMethods {
     public void getJoke(Observer<JokeDataWraper> observer, int page, int pageSize, long timestamp){
         Log.i("rxjava","timestamp : "+timestamp);
         apiService.getJokeList(page,pageSize,timestamp)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+    public void getWeixin(Observer<WeixinDataWraper> observer,int pno){
+        apiService.getWeixinList(pno)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

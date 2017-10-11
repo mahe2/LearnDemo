@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:clickable="true"
     tools:context="com.learn.demo.MainActivity">
 
-    <ListView
-        android:id="@+id/theme_listview"
+    <TextView
+        android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1">
-
-    </ListView>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="6dp"/>
 
 </LinearLayout>

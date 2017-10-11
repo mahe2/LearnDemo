@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.learn.demo.R;
+import com.learn.demo.adapter.EntryAdapter;
 import com.learn.demo.adapter.JokeListAdapter;
-import com.learn.demo.bean.Joke;
+import com.learn.demo.bean.EntryData;
 import com.learn.demo.bean.JokeDataWraper;
 import com.learn.demo.net.HttpMethods;
 
@@ -19,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -31,9 +29,9 @@ import io.reactivex.disposables.Disposable;
 @Route(path = "/rxjava/")
 public class RxJavaActivity extends AppCompatActivity {
 
-    private ArrayList<Joke> mJokeListAdapterDataSet = new ArrayList<Joke>();
-    private ListView mThemeListView;
-    private JokeListAdapter mJokeListAdapter;
+    private ArrayList<EntryData> mEntryDataSet = new ArrayList<EntryData>();
+    private EntryAdapter mEntryAdapter;
+    private ListView mRxJavaEntryListView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,53 +41,24 @@ public class RxJavaActivity extends AppCompatActivity {
     }
 
     private void initView(){
-        mThemeListView = (ListView) findViewById(R.id.theme_listview);
-        mJokeListAdapter = new JokeListAdapter(this);
-        mJokeListAdapter.setDataSet(mJokeListAdapterDataSet);
-        mThemeListView.setAdapter(mJokeListAdapter);
+        mRxJavaEntryListView = (ListView) findViewById(R.id.theme_listview);
     }
 
     private void initData(){
-        HttpMethods.getInstance().getJoke(new Observer<JokeDataWraper>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                log("onSubscribe ");
-            }
+        EntryData jokelistEntry = new EntryData("笑话列表","/jokelist/");
+        EntryData weixinEntry = new EntryData("微信精选","/weixin/");
 
-            @Override
-            public void onNext(JokeDataWraper jokeDataWraper) {
-                mJokeListAdapterDataSet.clear();
-                mJokeListAdapterDataSet.addAll(jokeDataWraper.result.data);
-                mJokeListAdapter.notifyDataSetChanged();
-                log("success : "+jokeDataWraper.result.data.size());
-            }
 
-            @Override
-            public void onError(Throwable e) {
-                log("error : "+e.getMessage());
-            }
+        mEntryDataSet.add(jokelistEntry);
+        mEntryDataSet.add(weixinEntry);
 
-            @Override
-            public void onComplete() {
-                log("onComplete ");
-            }
-        },1,10,getTimeStamp());
+        mEntryAdapter = new EntryAdapter(this);
+        mRxJavaEntryListView.setAdapter(mEntryAdapter);
+        mEntryAdapter.setDataSet(mEntryDataSet);
     }
 
     private void log(String msg){
         Log.i("rxjava",msg);
     }
 
-
-    private long getTimeStamp(){
-        try {
-            String time = "2014/10/01 14:50:11";
-            Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse(time);
-            long unixTimestamp = date.getTime()/1000;
-            return unixTimestamp;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0L;
-    }
 }

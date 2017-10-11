@@ -21,11 +21,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.EntryActivity"></activity>
-        <activity android:name=".activity.TestARouterActivity"></activity>
-        <activity android:name=".activity.RxJavaActivity"></activity>
-        <activity android:name=".activity.MvpActivity"></activity>
-        <activity android:name=".activity.EventBusActivity"></activity>
+        <activity android:name=".activity.EntryActivity"/>
+        <activity android:name=".activity.TestARouterActivity"/>
+        <activity android:name=".activity.RxJavaActivity"/>
+        <activity android:name=".activity.RxJavaJokeListActivity"/>
+        <activity android:name=".activity.RxJavaWeixinListActivity"/>
+        <activity android:name=".activity.MvpActivity"/>
+        <activity android:name=".activity.EventBusActivity"/>
     </application>
 
 </manifest>
