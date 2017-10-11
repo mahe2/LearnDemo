@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.learn.demo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".framework.LeApplication"
         android:allowBackup="true"

@@ -1,6 +1,9 @@
 package com.learn.demo.net;
 
+import android.util.Log;
+
 import com.learn.demo.bean.Joke;
+import com.learn.demo.bean.JokeDataWraper;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -53,7 +56,8 @@ public class HttpMethods {
         return sinalInstance.instance;
     }
 
-    public void getJoke(Observer<List<Joke>> observer,int page,int pageSize,long timestamp){
+    public void getJoke(Observer<JokeDataWraper> observer, int page, int pageSize, long timestamp){
+        Log.i("rxjava","timestamp : "+timestamp);
         apiService.getJokeList(page,pageSize,timestamp)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
