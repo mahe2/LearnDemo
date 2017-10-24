@@ -9,8 +9,11 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class LeApplication extends Application {
+
+    public static Application application;
     public void onCreate() {
         super.onCreate();
+        application = this;
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.

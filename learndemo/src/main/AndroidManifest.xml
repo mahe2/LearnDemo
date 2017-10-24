@@ -28,6 +28,7 @@
         <activity android:name=".activity.RxJavaWeixinListActivity"/>
         <activity android:name=".activity.MvpActivity"/>
         <activity android:name=".activity.EventBusActivity"/>
+        <activity android:name=".activity.RxJavaDemoActivity"/>
     </application>
 
 </manifest>
