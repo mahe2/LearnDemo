@@ -127,7 +127,7 @@ public class CheckNetWorkStatus {
 	}
 	
 	public static String getConnectWifiSsid(Context context){ 
-        WifiManager wifiManager = (WifiManager) context.getSystemService(context.WIFI_SERVICE); 
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo(); 
         return wifiInfo.getSSID(); 
  }
