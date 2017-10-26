@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 apply plugin: 'packer'
 def AAVersion = '4.1.0'
 
@@ -18,13 +17,13 @@ loadProperties()
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.learn.demo"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.0011"
+        versionName "1.0.0021"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -115,15 +114,15 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    apt "org.androidannotations:androidannotations:$AAVersion"//依赖注入
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"//依赖注入
     compile "org.androidannotations:androidannotations-api:$AAVersion"//
     testCompile 'junit:junit:4.12'
-    apt 'com.alibaba:arouter-compiler:1.0.1'//
+    annotationProcessor 'com.alibaba:arouter-compiler:1.0.1'//
     compile 'com.alibaba:arouter-api:1.0.2'//页面路由
     compile 'com.mcxiaoke.packer-ng:helper:2.0.0'//多渠道打包
 
     compile 'com.google.dagger:dagger:2.4'
-    apt 'com.google.dagger:dagger-compiler:2.4'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
     //java注解
     compile 'org.glassfish:javax.annotation:10.0-b28'
 
@@ -133,7 +132,7 @@ dependencies {
     //内存检查 END
 
     compile 'com.jakewharton:butterknife:8.8.1'
-    apt 'com.jakewharton:butterknife-compiler:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //rxjava2 + retrofit2 实现网络请求
     compile'io.reactivex.rxjava2:rxjava:2.1.5'
@@ -161,18 +160,18 @@ packer {
 //    ]
 }
 
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-        // if you have multiple outputs (when using splits), you may want to have other index than 0
-
-        // you should set your package name here if you are using different application IDs
-        // resourcePackageName "your.package.name"
-
-        // You can set optional annotation processing options here, like these commented options:
-        // logLevel 'INFO'
-        // logFile '/var/log/aa.log'
-        moduleName project.getName();
-    }
-
-}
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+//        // if you have multiple outputs (when using splits), you may want to have other index than 0
+//
+//        // you should set your package name here if you are using different application IDs
+//        // resourcePackageName "your.package.name"
+//
+//        // You can set optional annotation processing options here, like these commented options:
+//        // logLevel 'INFO'
+//        // logFile '/var/log/aa.log'
+//        moduleName project.getName();
+//    }
+//
+//}
