@@ -40,11 +40,13 @@ public class EntryActivity extends LeActivity {
         EntryData eventBusEntry = new EntryData("EventBus","/eventbus/");
         EntryData mvpEntry = new EntryData("Mvp模式","/mvp/");
         EntryData arouterEntry = new EntryData("ARouter页","/test_arouter/");
+        EntryData lambdaEntry = new EntryData("Lambda表达式","/lambda/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
         mEntryDataSet.add(mvpEntry);
         mEntryDataSet.add(arouterEntry);
+        mEntryDataSet.add(lambdaEntry);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);

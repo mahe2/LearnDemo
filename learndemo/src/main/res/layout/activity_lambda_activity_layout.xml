@@ -8,18 +8,9 @@
     android:gravity="center"
     tools:context="com.learn.demo.MainActivity">
 
-    <Button
-        android:id="@+id/click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rx处理点击事件"
-        android:layout_marginBottom="20dp"/>
-
     <TextView
-        android:id="@+id/text_content"
-        android:text="RxJavaDemo"
+        android:text="我是Lambda 页"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 
 </LinearLayout>
