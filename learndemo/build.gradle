@@ -31,6 +31,10 @@ android {
                 arguments = [ moduleName : project.getName() ]
             }
         }
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
 
     signingConfigs {
@@ -89,6 +93,12 @@ android {
     lintOptions {
         abortOnError false
         htmlReport true
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
     }
 
     packagingOptions {

@@ -32,6 +32,7 @@
         <activity android:name=".activity.EventBusActivity"/>
         <activity android:name=".activity.RxJavaDemoActivity"/>
         <activity android:name=".activity.LambdaActivity"/>
+        <activity android:name=".activity.NdkActivity"/>
     </application>
 
 </manifest>

@@ -41,12 +41,14 @@ public class EntryActivity extends LeActivity {
         EntryData mvpEntry = new EntryData("Mvp模式","/mvp/");
         EntryData arouterEntry = new EntryData("ARouter页","/test_arouter/");
         EntryData lambdaEntry = new EntryData("Lambda表达式","/lambda/");
+        EntryData ndkEntry = new EntryData("ndk调用","/ndk/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
         mEntryDataSet.add(mvpEntry);
         mEntryDataSet.add(arouterEntry);
         mEntryDataSet.add(lambdaEntry);
+        mEntryDataSet.add(ndkEntry);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);
