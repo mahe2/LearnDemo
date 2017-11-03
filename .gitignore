@@ -8,4 +8,7 @@
 /captures
 .externalNativeBuild
 .idea/vcs.xml
+.idea/markdown-navigator.xml
+/cyan/build/
+/cyan/demo.iml
 
