@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LearnDemo.iml" filepath="$PROJECT_DIR$/LearnDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyan/Demo.iml" filepath="$PROJECT_DIR$/cyan/Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LearnDemo.iml" filepath="$PROJECT_DIR$/LearnDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/learndemo/learndemo.iml" filepath="$PROJECT_DIR$/learndemo/learndemo.iml" />
     </modules>
   </component>
