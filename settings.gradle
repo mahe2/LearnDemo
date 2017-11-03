@@ -1,1 +1,1 @@
-include ':learndemo'
+include ':learndemo', ':cyan'
