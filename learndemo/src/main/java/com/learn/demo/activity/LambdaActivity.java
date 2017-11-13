@@ -36,11 +36,11 @@ public class LambdaActivity extends AppCompatActivity {
     }
 
     private void initData(){
-        Runnable runnable = () -> {
-            Log.i("lamb","hello word");
-        };
+//        Runnable runnable = () -> {
+//            Log.i("lamb","hello word");
+//        };
 
-        new Thread(runnable).start();
+//        new Thread(runnable).start();
 
     }
 
