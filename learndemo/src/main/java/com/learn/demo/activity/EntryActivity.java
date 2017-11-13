@@ -42,6 +42,7 @@ public class EntryActivity extends LeActivity {
         EntryData arouterEntry = new EntryData("ARouter页","/test_arouter/");
         EntryData lambdaEntry = new EntryData("Lambda表达式","/lambda/");
         EntryData ndkEntry = new EntryData("ndk调用","/ndk/");
+        EntryData cyanEntry = new EntryData("畅言评论系统","/cyan/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
@@ -49,6 +50,7 @@ public class EntryActivity extends LeActivity {
         mEntryDataSet.add(arouterEntry);
         mEntryDataSet.add(lambdaEntry);
         mEntryDataSet.add(ndkEntry);
+        mEntryDataSet.add(cyanEntry);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);

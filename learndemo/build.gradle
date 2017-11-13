@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'packer'
+apply plugin: 'android-apt'
 def AAVersion = '4.1.0'
 
 ext.appReleaseDir = ""
@@ -23,7 +24,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.0021"
+        versionName "1.0.0031"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -107,24 +108,24 @@ android {
     }
 
     // 使用 clean assemble 打包时使用以下代码
-//    applicationVariants.all{ variant->
-//        variant.outputs.each { output->
-//            def oldFile = output.outputFile
-//            def newName = '';
-//            if(variant.buildType.name.equals('release')){
-//                // APK输出文件名规则：aiyou-版本名-市场-release.apk
-//                def releaseApkName = 'learndemo_' + defaultConfig.versionName + '.apk'
-//                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
-//                output.outputFile = new File(appReleaseDir + '/', releaseApkName)
-//            }
-//        }
-//    }
-
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    applicationVariants.all{ variant->
+        variant.outputs.each { output->
+            def oldFile = output.outputFile
+            def newName = '';
+            if(variant.buildType.name.equals('release')){
+                // APK输出文件名规则：aiyou-版本名-市场-release.apk
+                def releaseApkName = 'learndemo_' + defaultConfig.versionName + '.apk'
+                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+                output.outputFile = new File(appReleaseDir + '/', releaseApkName)
+            }
+        }
     }
+
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 }
 
 dependencies {
@@ -164,6 +165,7 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //eventbus
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
+
 }
 
 packer {
@@ -180,18 +182,18 @@ packer {
 //    ]
 }
 
-//apt {
-//    arguments {
-//        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-//        // if you have multiple outputs (when using splits), you may want to have other index than 0
-//
-//        // you should set your package name here if you are using different application IDs
-//        // resourcePackageName "your.package.name"
-//
-//        // You can set optional annotation processing options here, like these commented options:
-//        // logLevel 'INFO'
-//        // logFile '/var/log/aa.log'
-//        moduleName project.getName();
-//    }
-//
-//}
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // you should set your package name here if you are using different application IDs
+        // resourcePackageName "your.package.name"
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel 'INFO'
+        // logFile '/var/log/aa.log'
+        moduleName project.getName();
+    }
+
+}
