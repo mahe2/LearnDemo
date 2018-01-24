@@ -12,15 +12,15 @@ import com.learn.demo.adapter.EntryAdapter;
 import com.learn.demo.adapter.JokeListAdapter;
 import com.learn.demo.bean.EntryData;
 import com.learn.demo.bean.JokeDataWraper;
-import com.learn.demo.net.HttpMethods;
+//import com.learn.demo.net.HttpMethods;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+//import io.reactivex.Observer;
+//import io.reactivex.disposables.Disposable;
 
 /**
  * Created by mahe on 2017/8/30.

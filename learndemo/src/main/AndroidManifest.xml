@@ -33,7 +33,7 @@
         <activity android:name=".activity.RxJavaDemoActivity"/>
         <activity android:name=".activity.LambdaActivity"/>
         <activity android:name=".activity.NdkActivity"/>
-        <activity android:name=".activity.CyanActivity"/>
+        <activity android:name=".activity.JavaDynamicProxyActivity"/>
     </application>
 
 </manifest>
