@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    tools:context="com.learn.demo.MainActivity">
+
+    <TextView
+        android:text="我是Material Design 页"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/snackbar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="snackbar"
+        android:layout_marginTop="6dp"/>
+
+    <Button
+        android:id="@+id/textinpulayout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextInputLayout"
+        android:layout_marginTop="6dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@mipmap/ic_launcher"
+        android:backgroundTint="#3F51B5"
+        app:elevation="3dp"
+        app:pressedTranslationZ="6dp"
+        android:layout_marginTop="6dp"/>
+
+    <Button
+        android:id="@+id/tablelayout_activity_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tablelayout"
+        android:layout_marginTop="6dp"/>
+
+</LinearLayout>

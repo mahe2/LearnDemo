@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.learn.demo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".framework.LeApplication"
         android:allowBackup="true"
@@ -15,25 +21,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name="com.learn.demo.activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.EntryActivity"/>
-        <activity android:name=".activity.TestARouterActivity"/>
-        <activity android:name=".activity.RxJavaActivity"/>
-        <activity android:name=".activity.RxJavaJokeListActivity"/>
-        <activity android:name=".activity.RxJavaWeixinListActivity"/>
-        <activity android:name=".activity.MvpActivity"/>
-        <activity android:name=".activity.EventBusActivity"/>
-        <activity android:name=".activity.RxJavaDemoActivity"/>
-        <activity android:name=".activity.LambdaActivity"/>
-        <activity android:name=".activity.NdkActivity"/>
-        <activity android:name=".activity.JavaDynamicProxyActivity"/>
+        <activity android:name=".activity.EntryActivity" />
+        <activity android:name=".activity.TestARouterActivity" />
+        <activity android:name=".activity.RxJavaActivity" />
+        <activity android:name=".activity.RxJavaJokeListActivity" />
+        <activity android:name=".activity.RxJavaWeixinListActivity" />
+        <activity android:name=".activity.MvpActivity" />
+        <activity android:name=".activity.EventBusActivity" />
+        <activity android:name=".activity.RxJavaDemoActivity" />
+        <activity android:name=".activity.LambdaActivity" />
+        <activity android:name=".activity.NdkActivity" />
+        <activity android:name=".activity.JavaDynamicProxyActivity" />
+        <activity android:name=".activity.MaterialDesignActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.TableLayoutActivity"/>
     </application>
 
 </manifest>

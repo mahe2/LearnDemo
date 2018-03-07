@@ -46,7 +46,7 @@ public class JokeListAdapter extends AbsCommenAdapter<Joke> {
 
     private ViewHolder createHolder(View convertView){
         ViewHolder viewHolder = new ViewHolder();
-        viewHolder.entryName = convertView.findViewById(R.id.joke_content_textview);
+        viewHolder.entryName = (TextView) convertView.findViewById(R.id.joke_content_textview);
         return viewHolder;
     }
 

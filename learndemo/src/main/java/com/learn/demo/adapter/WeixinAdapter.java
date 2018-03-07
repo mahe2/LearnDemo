@@ -45,7 +45,7 @@ public class WeixinAdapter extends AbsCommenAdapter<Joke> {
 
     private ViewHolder createHolder(View convertView){
         ViewHolder viewHolder = new ViewHolder();
-        viewHolder.entryName = convertView.findViewById(R.id.text);
+        viewHolder.entryName = (TextView) convertView.findViewById(R.id.text);
         return viewHolder;
     }
 

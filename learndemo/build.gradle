@@ -8,7 +8,7 @@ ext.appReleaseDir = ""
 def loadProperties() {
     def proFile = file("../gradle.properties")
     Properties p = new Properties()
-    proFile.withInputStream { stream->
+    proFile.withInputStream { stream ->
         p.load(stream)
     }
     appReleaseDir = p.appReleaseDir
@@ -17,19 +17,19 @@ def loadProperties() {
 loadProperties()
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 25
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.learn.demo"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0.0041"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
 
@@ -121,7 +121,6 @@ android {
 //        }
 //    }
 
-
 //    compileOptions {
 //        sourceCompatibility JavaVersion.VERSION_1_8
 //        targetCompatibility JavaVersion.VERSION_1_8
@@ -144,14 +143,11 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     //
     testCompile 'junit:junit:4.12'
-
     //页面路由
     compile 'com.alibaba:arouter-api:1.2.2'
     apt 'com.alibaba:arouter-compiler:1.1.3'
-
     //多渠道打包
     compile 'com.mcxiaoke.packer-ng:helper:2.0.0'
-
     compile 'com.google.dagger:dagger:2.4'
     apt 'com.google.dagger:dagger-compiler:2.4'
     //java注解
@@ -171,14 +167,13 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //eventbus
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
-
-
+    compile 'com.android.support:design:25.1.0'
 }
 
 packer {
     archiveNameFormat = '${buildType}-v${versionName}-${channel}'
 //    archiveOutput = new File(project.rootProject.buildDir, "apks")
-      archiveOutput = new File(appReleaseDir)
+    archiveOutput = new File(appReleaseDir)
 //    channelList = ['*Douban*', 'Google/', '中文/@#市场', 'Hello@World',
 //                   'GradleTest', '20070601!@#$%^&*(){}:"<>?-=[];\',./']
     channelFile = new File(project.rootDir, "markets.txt")

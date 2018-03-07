@@ -47,7 +47,7 @@ public class EntryAdapter extends AbsCommenAdapter<EntryData> {
 
     private ViewHolder createHolder(View convertView){
         ViewHolder viewHolder = new ViewHolder();
-        viewHolder.entryName = convertView.findViewById(R.id.entry_name_textview);
+        viewHolder.entryName = (TextView) convertView.findViewById(R.id.entry_name_textview);
         return viewHolder;
     }
 
