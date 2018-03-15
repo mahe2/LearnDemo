@@ -45,6 +45,7 @@ public class EntryActivity extends LeActivity {
         EntryData cyanEntry = new EntryData("畅言评论系统","/cyan/");
         EntryData javaDynamicProxyEntry = new EntryData("Java动态代理","/dynamicproxy/");
         EntryData materialDesignEntry = new EntryData("MaterialDesign","/materialDesign/");
+        EntryData fragmentEntry = new EntryData("Fragment","/fragment/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
@@ -55,6 +56,7 @@ public class EntryActivity extends LeActivity {
         mEntryDataSet.add(cyanEntry);
         mEntryDataSet.add(javaDynamicProxyEntry);
         mEntryDataSet.add(materialDesignEntry);
+        mEntryDataSet.add(fragmentEntry);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);

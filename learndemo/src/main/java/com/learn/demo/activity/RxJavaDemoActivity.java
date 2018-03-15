@@ -39,6 +39,7 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.SingleSubject;
+import rx.Subscriber;
 import rx.functions.Action1;
 
 /**
@@ -60,89 +61,132 @@ public class RxJavaDemoActivity extends AppCompatActivity {
     }
 
     private void initView(){
-        Single.just(add(10,14))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Integer>() {
+        RxView.clicks(clickBtn).subscribe(new Action1<Void>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onSuccess(@NonNull Integer s) {
-//                textContent.setText(String.valueOf(s));
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-                textContent.setText(e.getMessage());
+            public void call(Void aVoid) {
+                Toast.makeText(RxJavaDemoActivity.this, "click", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Observable<String> myObservable = Observable.just("hello word");
+    }
 
-        Observable<String> myObservable2 = Observable.create(new ObservableOnSubscribe<String>() {
+
+    private void initData(){
+//        createObserableTest();
+//        justObservableTest();
+        fromObservableTest();
+    }
+
+
+    private void createObserableTest(){
+        Observer<String> createObservableObserver = new Observer<String>() {
+            Disposable disposable = null;
             @Override
-            public void subscribe(ObservableEmitter<String> e) throws Exception {
-                e.onNext("hello");
-                e.onNext("china");
-                e.onNext("you are great");
-                e.onComplete();
+            public void onSubscribe(Disposable d) {
+                log("onSubscribe: "+d.isDisposed());
+                disposable = d;
+            }
+
+            @Override
+            public void onNext(String s) {
+                if("?".equals(s)){
+                    disposable.dispose();
+                }
+                log("disposable : "+disposable.isDisposed());
+                log("onNext: "+s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                log("onError: "+e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                log("onComplete");
+            }
+        };
+
+        Observable<String> createObservable = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter e) throws Exception {
+                e.onNext("股票");
+                e.onNext("还能不能涨了");
+                e.onNext("?");
+                e.onNext("完毕");
             }
         });
 
+        createObservable.subscribe(createObservableObserver);
+    }
 
-        Observer<String> myObserver = new Observer<String>() {
+    private void justObservableTest(){
+        Observable justObservable = Observable.just(1,2,3);
+        Observer<Integer> justObservableObserver = new Observer<Integer>() {
+            Disposable disposable;
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
+            public void onSubscribe(Disposable d) {
+                disposable = d;
             }
 
             @Override
-            public void onNext(@NonNull String s) {
-                textContent.setText(s);
+            public void onNext(Integer integer) {
+                if(2==integer){
+                    disposable.dispose();
+                }
+                log("disposable : "+disposable.isDisposed());
+                log("onNext: "+integer);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
+            public void onError(Throwable e) {
 
             }
 
             @Override
             public void onComplete() {
-//                Toast.makeText(RxJavaDemoActivity.this, "onComplete", Toast.LENGTH_SHORT).show();
+
             }
         };
 
-
-        myObservable2.subscribe(myObserver);
-
-
-//        RxView.clicks(clickBtn).subscribe(new Action1<Void>() {
-//            @Override
-//            public void call(Void aVoid) {
-//                Toast.makeText(RxJavaDemoActivity.this, "click", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-        rx.Observable btnObservable = RxView.clicks(clickBtn).share();
-        btnObservable.buffer(btnObservable.debounce(300, TimeUnit.MILLISECONDS))
-                .subscribe(new Action1<List<Void>>() {
-                    @Override
-                    public void call(List<Void> voids) {
-                        clickBtn.setText("" + voids.size() + "连击");
-                    }
-                });
+        justObservable.subscribe(justObservableObserver);
     }
 
-    private int add(int a,int b){
-        return a+b;
+    private void fromObservableTest(){
+        String[] names = {"张三","李四","王二"};
+        Observable<String> fromObservable = Observable.fromArray(names);
+
+        Observer<String> fromObservableObserver = new Observer<String>() {
+            Disposable disposable;
+            @Override
+            public void onSubscribe(Disposable d) {
+                disposable = d;
+            }
+
+            @Override
+            public void onNext(String s) {
+                if("李四".equals(s)){
+                    disposable.dispose();
+                }
+                log("disposable : "+disposable.isDisposed());
+                log("onNext: "+s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+
+        fromObservable.subscribe(fromObservableObserver);
     }
 
-    private void initData(){
 
-    }
 
     private void log(String msg){
         Log.i("rxjava",msg);
