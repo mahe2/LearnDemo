@@ -1,11 +1,18 @@
 package com.learn.demo.framework;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
+import com.learn.demo.BuildConfig;
 import com.squareup.leakcanary.LeakCanary;
 
+import timber.log.Timber;
+
 /**
- * Created by mahe on 2017/8/30.
+ * Author: millioncoder@sina.com
+ * Date: 2018/3/20
+ * Dscreption: 
  */
 
 public class LeApplication extends Application {
@@ -20,5 +27,31 @@ public class LeApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            Timber.plant(new CrashReportingTree());
+        }
+    }
+
+    /** A tree which logs important information for crash reporting. */
+    private static class CrashReportingTree extends Timber.Tree {
+        @Override
+        protected void log(int priority, String tag, @NonNull String message, Throwable t) {
+            if (priority == Log.VERBOSE || priority == Log.DEBUG) {
+                return;
+            }
+
+            FakeCrashLibrary.log(priority, tag, message);
+
+            if (t != null) {
+                if (priority == Log.ERROR) {
+                    FakeCrashLibrary.logError(t);
+                } else if (priority == Log.WARN) {
+                    FakeCrashLibrary.logWarning(t);
+                }
+            }
+        }
     }
 }

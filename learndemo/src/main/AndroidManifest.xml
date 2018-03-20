@@ -45,6 +45,9 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.TableLayoutActivity"/>
         <activity android:name=".activity.FragActivity"/>
+        <activity android:name=".activity.NormalTestActivity"/>
+        <activity android:name=".activity.ServiceTestActivity"/>
+        <activity android:name=".activity.LogTestActivity"/>
     </application>
 
 </manifest>

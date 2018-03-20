@@ -24,7 +24,7 @@ public class SplashActivity extends LeActivity {
     @BindView(R.id.channel_textview) TextView mChannelTextView;
     @BindView(R.id.count_down_textview) TextView mCountDownTextView;
     private String channel = "debug";
-    private int countDown = 3;
+    private int countDown = 1;
 
     private Handler splashHandler = new Handler(){
         @Override

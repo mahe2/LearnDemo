@@ -168,6 +168,8 @@ dependencies {
     //eventbus
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
     compile 'com.android.support:design:25.1.0'
+
+    compile 'com.jakewharton.timber:timber:4.6.1'
 }
 
 packer {
