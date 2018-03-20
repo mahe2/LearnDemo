@@ -15,7 +15,7 @@ import org.androidannotations.annotations.EActivity;
 //@EActivity
 public abstract class LeActivity extends AppCompatActivity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    final protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("s","Le Activity onCreate");
         onCreateActivityImpl();
@@ -23,6 +23,17 @@ public abstract class LeActivity extends AppCompatActivity {
 
     protected  abstract void onCreateActivityImpl();
 
-//    @AfterViews
+    protected void onClearActivity(){
+
+    }
+
+    @Override
+    final protected void onDestroy() {
+        onClearActivity();
+        super.onDestroy();
+
+    }
+
+    //    @AfterViews
 //    protected abstract void afterViewsInject();
 }
