@@ -23,16 +23,6 @@ public abstract class LeActivity extends AppCompatActivity {
 
     protected  abstract void onCreateActivityImpl();
 
-    protected void onClearActivity(){
-
-    }
-
-    @Override
-    final protected void onDestroy() {
-        onClearActivity();
-        super.onDestroy();
-
-    }
 
     //    @AfterViews
 //    protected abstract void afterViewsInject();

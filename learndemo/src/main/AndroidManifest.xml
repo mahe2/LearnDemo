@@ -48,6 +48,7 @@
         <activity android:name=".activity.NormalTestActivity"/>
         <activity android:name=".activity.ServiceTestActivity"/>
         <activity android:name=".activity.LogTestActivity"/>
+        <activity android:name=".activity.RecyclerView1Activity"/>
     </application>
 
 </manifest>

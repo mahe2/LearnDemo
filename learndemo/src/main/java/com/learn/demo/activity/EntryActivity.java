@@ -49,6 +49,7 @@ public class EntryActivity extends LeActivity {
         EntryData normalTest = new EntryData("NormalTest","/normaltest/");
         EntryData serviceTest = new EntryData("ServiceTest","/servicetest/");
         EntryData log = new EntryData("Log","/log/");
+        EntryData recyclerView1 = new EntryData("RecyclerView1","/recyclerview1/");
 
 
         mEntryDataSet.add(rxJavaEntry);
@@ -64,6 +65,7 @@ public class EntryActivity extends LeActivity {
         mEntryDataSet.add(normalTest);
         mEntryDataSet.add(serviceTest);
         mEntryDataSet.add(log);
+        mEntryDataSet.add(recyclerView1);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);

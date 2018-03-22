@@ -29,9 +29,20 @@ public class LeApplication extends Application {
         LeakCanary.install(this);
 
         if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
+            Timber.plant(new LeLogTree());
         } else {
             Timber.plant(new CrashReportingTree());
+        }
+    }
+
+
+    private static class LeLogTree extends Timber.DebugTree{
+        @Override
+        protected void log(int priority, String tag, String message, Throwable t) {
+            if(BuildConfig.DEBUG || Log.isLoggable("tag",Log.DEBUG)){
+                super.log(priority, tag, message, t);
+            }
+
         }
     }
 

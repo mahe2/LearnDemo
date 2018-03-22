@@ -18,11 +18,11 @@ public class LogTestActivity extends LeActivity {
         setContentView(R.layout.activity_log_activity_layout);
 
         Timber.tag("tag");
-        Timber.d("onCreate");
+        Timber.d("debug onCreate");
+
+        Timber.i("info onCreate");
+
+        Timber.e("error onCreate");
     }
 
-    @Override
-    protected void onClearActivity() {
-        Timber.d("onDestory");
-    }
 }
