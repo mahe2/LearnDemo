@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'packer'
-apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
 def AAVersion = '4.1.0'
 
 ext.appReleaseDir = ""
@@ -17,12 +17,12 @@ def loadProperties() {
 loadProperties()
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.learn.demo"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0.0051"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -141,23 +141,22 @@ dependencies {
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     //依赖注入
     compile "org.androidannotations:androidannotations-api:$AAVersion"
-    //
-    testCompile 'junit:junit:4.12'
+
     //页面路由
     compile 'com.alibaba:arouter-api:1.2.2'
-    apt 'com.alibaba:arouter-compiler:1.1.3'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
     //多渠道打包
     compile 'com.mcxiaoke.packer-ng:helper:2.0.0'
     compile 'com.google.dagger:dagger:2.4'
-    apt 'com.google.dagger:dagger-compiler:2.4'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
     //java注解
     compile 'org.glassfish:javax.annotation:10.0-b28'
     //内存检查 START
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     //内存检查 END
-    compile 'com.jakewharton:butterknife:8.8.1'
-    apt 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     //rxjava2 + retrofit2 实现网络请求
     compile 'io.reactivex.rxjava2:rxjava:2.1.5'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -166,10 +165,13 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //eventbus
-    compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:design:25.1.0'
-
     compile 'com.jakewharton.timber:timber:4.6.1'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+
+    compile 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 }
 
 packer {
@@ -186,18 +188,18 @@ packer {
 //    ]
 }
 
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
-        // if you have multiple outputs (when using splits), you may want to have other index than 0
-
-        // you should set your package name here if you are using different application IDs
-        // resourcePackageName "your.package.name"
-
-        // You can set optional annotation processing options here, like these commented options:
-        // logLevel 'INFO'
-        // logFile '/var/log/aa.log'
-        moduleName project.getName();
-    }
-
-}
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+//        // if you have multiple outputs (when using splits), you may want to have other index than 0
+//
+//        // you should set your package name here if you are using different application IDs
+//        // resourcePackageName "your.package.name"
+//
+//        // You can set optional annotation processing options here, like these commented options:
+//        // logLevel 'INFO'
+//        // logFile '/var/log/aa.log'
+//        moduleName project.getName();
+//    }
+//
+//}

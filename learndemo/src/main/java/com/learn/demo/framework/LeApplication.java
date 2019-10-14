@@ -1,6 +1,7 @@
 package com.learn.demo.framework;
 
 import android.app.Application;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -19,6 +20,16 @@ public class LeApplication extends Application {
 
     public static Application application;
     public void onCreate() {
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new LeLogTree());
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
+        } else {
+            Timber.plant(new CrashReportingTree());
+        }
+
+
         super.onCreate();
         application = this;
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -28,11 +39,7 @@ public class LeApplication extends Application {
         }
         LeakCanary.install(this);
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new LeLogTree());
-        } else {
-            Timber.plant(new CrashReportingTree());
-        }
+
     }
 
 

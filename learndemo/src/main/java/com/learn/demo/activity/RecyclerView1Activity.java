@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.learn.demo.R;
 import com.learn.demo.fragment.AddedFragment;
+import com.learn.demo.fragment.SongsFragment;
 
 /**
  * Created by mahe on 2018/3/8.
@@ -21,7 +22,7 @@ public class RecyclerView1Activity extends FragmentActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.content_layout, new AddedFragment())
+                .add(R.id.content_layout, new SongsFragment())
                 .commit();
     }
 }

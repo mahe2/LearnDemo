@@ -10,12 +10,13 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.learn.demo.R;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.greenrobot.event.EventBus;
-import de.greenrobot.event.Subscribe;
-import de.greenrobot.event.ThreadMode;
 
 /**
  * Created by mahe on 2017/8/30.
@@ -39,7 +40,7 @@ public class EventBusActivity extends AppCompatActivity {
         EventBus.getDefault().post("test event bus");
     }
 
-    @Subscribe(threadMode = ThreadMode.MainThread)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void helloEventBus(String msg){
         mEventBusTextView.setText(msg);
     }

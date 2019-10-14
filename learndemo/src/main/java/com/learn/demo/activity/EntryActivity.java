@@ -28,11 +28,18 @@ public class EntryActivity extends LeActivity {
         setContentView(R.layout.activity_main);
         initView();
         initData();
+
+
     }
 
 
     private void initView(){
         mEntryListView = (ListView) findViewById(R.id.entry_listview);
+//        try {
+//            Thread.sleep(20000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void initData(){
@@ -50,7 +57,8 @@ public class EntryActivity extends LeActivity {
         EntryData serviceTest = new EntryData("ServiceTest","/servicetest/");
         EntryData log = new EntryData("Log","/log/");
         EntryData recyclerView1 = new EntryData("RecyclerView1","/recyclerview1/");
-
+        EntryData lauchApp= new EntryData("包名启动app","/lauchapp/");
+        EntryData md5= new EntryData("获取文件md5","/md5/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
@@ -66,6 +74,8 @@ public class EntryActivity extends LeActivity {
         mEntryDataSet.add(serviceTest);
         mEntryDataSet.add(log);
         mEntryDataSet.add(recyclerView1);
+        mEntryDataSet.add(lauchApp);
+        mEntryDataSet.add(md5);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);
