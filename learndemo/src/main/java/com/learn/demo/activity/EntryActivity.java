@@ -59,6 +59,7 @@ public class EntryActivity extends LeActivity {
         EntryData recyclerView1 = new EntryData("RecyclerView1","/recyclerview1/");
         EntryData lauchApp= new EntryData("包名启动app","/lauchapp/");
         EntryData md5= new EntryData("获取文件md5","/md5/");
+        EntryData glide= new EntryData("glide图片加载","/glide/");
 
         mEntryDataSet.add(rxJavaEntry);
         mEntryDataSet.add(eventBusEntry);
@@ -76,6 +77,7 @@ public class EntryActivity extends LeActivity {
         mEntryDataSet.add(recyclerView1);
         mEntryDataSet.add(lauchApp);
         mEntryDataSet.add(md5);
+        mEntryDataSet.add(glide);
 
         mEntryAdapter = new EntryAdapter(this);
         mEntryListView.setAdapter(mEntryAdapter);
