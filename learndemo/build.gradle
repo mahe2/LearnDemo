@@ -148,7 +148,7 @@ dependencies {
 
     //页面路由
     compile ('com.alibaba:arouter-api:1.5.0'){
-//        exclude group: "com.android.support", module: "support-v4"
+        exclude group: "com.android.support", module: "support-v4"
     }
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     //多渠道打包
